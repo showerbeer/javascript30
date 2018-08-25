@@ -16,18 +16,18 @@ document.addEventListener('DOMContentLoaded', function (event) {
         newElement.setAttribute('src', map[key]);
         newElement.setAttribute('id', key);
         newElement.setAttribute('type', 'audio/wav');
-        document.getElementById('audio').appendChild(newElement);
+        document.body.appendChild(newElement);
     });
 
     document.body.addEventListener('keyup', function (e) {
         if (map[e.keyCode]) {
-            document.getElementById('box'+e.keyCode).classList.remove('active');
+            document.querySelector(`div[data-keycode="${e.keyCode}"]`).classList.remove('active');
         }
     });
 
     document.body.addEventListener('keydown', function (e) {
         if (map[e.keyCode]) {
-            document.getElementById('box'+e.keyCode).classList.add('active');
+            document.querySelector(`div[data-keycode="${e.keyCode}"]`).classList.add('active');
             document.getElementById(e.keyCode).cloneNode().play();
         }
     });
