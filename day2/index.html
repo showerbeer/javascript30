@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS30 - Day 2 - CSS JS Clock</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <style>
+        body {
+            background-color: cornflowerblue;
+        }
+
+        .clock {
+            padding-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .clock-face {
+            border: 15px solid white;
+            border-radius: 100%;
+            height: 300px;
+            width: 300px;
+            position: relative;
+        }
+
+        .hand {
+            height: 5px;
+            width: 50%;
+            background-color: black;
+            position: absolute;
+            top: 50%;
+            transform-origin: 100%;
+            transform: rotate(90deg);
+        }
+    </style>
+    <h1>Day 2 - CSS JS Clock</h1>
+    <hr>
+    <div class="clock">
+        <div class="clock-face">
+            <div class="hand" id="hourhand"></div>
+            <div class="hand" id="minutehand"></div>
+            <div class="hand" id="secondhand"></div>
+        </div>
+    </div>
+
+    <script>
+        var adjustHour = function(hour) {
+            var hand = document.getElementById('hourhand');
+            var angle = (hour/12) * 360 + 90;
+            hand.style.transform = `rotate(${angle}deg)`;
+        }
+
+        var adjustMinute = function(minute) {
+            var hand = document.getElementById('minutehand');
+            var angle = (minute/60) * 360 + 90;
+            hand.style.transform = `rotate(${angle}deg)`;
+        }
+
+        var adjustSecond = function (second) {
+            var hand = document.getElementById('secondhand');
+            var angle = (second/60) * 360 + 90;
+            hand.style.transform = `rotate(${angle}deg)`;
+        }
+
+        setInterval(function() {
+            var now = new Date();
+            adjustHour(now.getHours());
+            adjustMinute(now.getMinutes());
+            adjustSecond(now.getSeconds());
+        }, 1000);
+    </script>
+</body>
+
+</html>
