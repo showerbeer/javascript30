@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         newElement.setAttribute('src', map[key]);
         newElement.setAttribute('id', key);
         newElement.setAttribute('type', 'audio/wav');
-        document.getElementById('audio').appendChild(newElement);//.innerHTML += src;
+        document.getElementById('audio').appendChild(newElement);
     });
 
     document.body.addEventListener('keyup', function (e) {
