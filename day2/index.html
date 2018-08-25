@@ -35,6 +35,8 @@
             background-color: black;
             position: absolute;
             top: 50%;
+            transition: all 0.05s;
+            transition-timing-function: cubic-bezier(0.1, 2.5, 0.5, 1);
             transform-origin: 100%;
             transform: rotate(90deg);
         }
@@ -68,12 +70,15 @@
             hand.style.transform = `rotate(${angle}deg)`;
         }
 
-        setInterval(function() {
+        var setClock = function() {
             var now = new Date();
             adjustHour(now.getHours());
             adjustMinute(now.getMinutes());
             adjustSecond(now.getSeconds());
-        }, 1000);
+        }
+
+        setClock();
+        setInterval(setClock, 1000);
     </script>
 </body>
 
