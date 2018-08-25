@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS30 Day 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="day1.js"></script>
+</head>
+
+<body>
+    <style>
+        .container {
+            padding: 100px 0 0 0;
+            display: grid;
+            grid-template-columns: 50px;
+            grid-auto-flow: column;
+            grid-gap: 20px;
+            justify-items: center;
+            justify-content: space-evenly
+        }
+
+        .keyBox {
+            transition: 0.5s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            border: 2px solid black;
+            background-color: chocolate;
+            height: 50px;
+            width: 50px;
+        }
+
+        .active {
+            transform: scale(1.1);
+            background-color: yellow;
+        }
+
+        .key {
+            cursor: pointer;
+        }
+    </style>
+    <h1>Day 1 - JS Drum kit</h1>
+    <hr>
+    <audio id="audio">
+
+    </audio>
+    <div class="container">
+        <div id="box65" data-keycode="65" class="keyBox">
+            <kbd class="key">A</kbd>
+        </div>
+        <div id="box83" data-keycode="83" class="keyBox">
+            <kbd class="key">S</kbd>
+        </div>
+        <div id="box68" data-keycode="68" class="keyBox">
+            <kbd class="key">D</kbd>
+        </div>
+        <div id="box70" data-keycode="70" class="keyBox">
+            <kbd class="key">F</kbd>
+        </div>
+        <div id="box71" data-keycode="71" class="keyBox">
+            <kbd class="key">G</kbd>
+        </div>
+        <div id="box72" data-keycode="72" class="keyBox">
+            <kbd class="key">H</kbd>
+        </div>
+        <div id="box74" data-keycode="74" class="keyBox">
+            <kbd class="key">J</kbd>
+        </div>
+        <div id="box75" data-keycode="75" class="keyBox">
+            <kbd class="key">K</kbd>
+        </div>
+        <div id="box76" data-keycode="76" class="keyBox">
+            <kbd class="key">L</kbd>
+        </div>
+    </div>
+</body>
+
+</html>
