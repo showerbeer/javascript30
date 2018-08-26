@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS30 - Day 3 CSS Variables</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <style>
+        :root {
+            --base: #ffc600;
+            --top: 0px;
+            --left: 0px;
+        }
+
+        .container {
+            height: 150px;
+            width: 150px;
+            border: 20px dashed var(--base);
+            margin-top: var(--top);
+            margin-left: var(--left);
+        }
+    </style>
+
+    <h1>Day 3 - CSS Variables with JS</h1>
+    <hr>
+
+    <label for="left">Left</label>
+    <input type="range" name="left" min="0" max="500" step="1" value="1" data-suffix="px" oninput="update(this)">
+    <br>
+
+    <label for="top">Top</label>
+    <input type="range" name="top" min="0" max="500" step="1" value="1" data-suffix="px" oninput="update(this)">
+
+    <label for="color">Colour</label>
+    <input type="color" name="base" value="#ffc600" oninput="update(this)">
+
+    <div class="container"></div>
+
+    <script>
+        var update = (e) => {
+            const suffix = e.dataset.suffix || '';
+            document.documentElement.style.setProperty(`--${e.name}`, e.value + suffix);
+        }
+    </script>
+</body>
+</html>
