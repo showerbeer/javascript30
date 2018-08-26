@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Day 6 - Ajax Type Ahead</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <style>
+        input[type="text"] {
+            height: 50px;
+            font-size: larger;
+            font-weight: bold;
+        }
+
+
+    </style>
+    <h1>Day 6 - Ajac Type Ahead</h1>
+    <hr>
+
+    <input type="text" placeholder="Start typing" id="location">
+    <div id="suggestions"></div>
+    
+    <script>
+        
+        const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+        var xhr = new XMLHttpRequest();
+        var data = [];
+        var filtered = [];
+        function callback() {
+            if(xhr.readyState === XMLHttpRequest.DONE) {
+                if(xhr.status == 200) {
+                    data = JSON.parse(xhr.responseText);
+                }
+            }
+        }
+
+        function update() {
+            filtered = data.filter(x => {
+                const regex = new RegExp(this.value, 'ig');
+                return x.city.match(regex) || x.state.match(regex);
+            })
+            var str = '';
+            filtered.forEach(x => str += `<pre>State: ${x.state}\t\t\tCity: ${x.city}</pre>`);
+            document.getElementById('suggestions').innerHTML = str;
+        }
+
+        document.getElementById('location').addEventListener('input', update);
+        xhr.onreadystatechange = callback;
+        xhr.open('GET', endpoint);
+        xhr.send();
+
+        fetch(endpoint).th
+    </script>
+</body>
+
+</html>
+
+<!-- 
+0 (uninitialized) or (request not initialized)
+1 (loading) or (server connection established)
+2 (loaded) or (request received)
+3 (interactive) or (processing request)
+4 (complete) or (request finished and response is ready) -->
