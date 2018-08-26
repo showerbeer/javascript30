@@ -1,5 +1,5 @@
 const pretty = (a) => JSON.stringify(a, null, 4)
-const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+const data = ['car', 'car', 'pogostick', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
 const inventors = [
     { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
     { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
@@ -48,12 +48,20 @@ document.addEventListener('DOMContentLoaded', function (event) {
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
     var c6 = document.querySelector('pre.task6');
-
+    c6.innerHTML = "Array.from(document.querySelectorAll('.mw-category a')).map(x => x.text).filter(a => a.indexOf('de') > 0)";
+    
     // 7. sort Exercise
     // Sort the people alphabetically by last name
     var c7 = document.querySelector('pre.task7');
+    var a7 = people.sort((p1,p2) => p1.split(',')[0] < p2.split(',')[0] ? -1 : 1);
+    c7.innerHTML = pretty(a7);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     var c8 = document.querySelector('pre.task8');
+    var a8 = data.reduce((acc,cur) => {
+        acc[cur] = acc[cur] ? acc[cur] + 1 : 1;
+        return acc;
+    }, {});
+    c8.innerHTML = pretty(a8);
 });
