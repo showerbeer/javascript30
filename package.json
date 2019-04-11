@@ -4,11 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js",
+    "debug": "nodemon --nolazy --inspect-brk=9229 server.js"
+  
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.16.4",
     "live-server": "^1.2.0"
+  },
+  "devDependencies": {
+    "livereload": "^0.7.0"
   }
 }
